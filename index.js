@@ -274,7 +274,7 @@ MIT
   }
 
   showHelp() {
-    console.log(\`
+    console.log(`
 Usage: npm run <command> [options]
 
 Commands:
@@ -285,7 +285,7 @@ Commands:
 
 Example:
   npm run validate-fds -- ../downloads/st_clare_filing_system_fds.md
-\`);
+`);
   }
 }
 
