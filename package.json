@@ -1,0 +1,25 @@
+{
+  "name": "st-clare-filing-system-template",
+  "version": "1.0.0",
+  "description": "Template and documentation generator for St. Clare College Filing System",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "generate-toc": "node index.js --generate-toc",
+    "validate-fds": "node index.js --validate",
+    "create-sections": "node index.js --create-sections",
+    "dev": "node --watch index.js"
+  },
+  "keywords": [
+    "filing-system",
+    "electron",
+    "fds",
+    "documentation",
+    "template"
+  ],
+  "author": "St. Clare College",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
