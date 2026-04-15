@@ -8,12 +8,14 @@ This repository now includes a secure Electron + React + SQLite groundwork align
 - IPC starter handlers using zod validation and standard envelopes
 - `better-sqlite3` database bootstrap (WAL mode, baseline config)
 - React + Vite renderer with routing, Zustand, and React Query
+- Optional packaging/rebuild tooling via on-demand `npx` commands
 - Packaging scripts for Windows NSIS via electron-builder
 - Checklist-driven docs in `docs/checklists/`
 
 ## Run locally
 ```bash
-npm install
+nvm use 22
+npm run setup:dev
 npm run dev
 ```
 

@@ -5,22 +5,23 @@
   "type": "module",
   "main": "src/main/index.js",
   "scripts": {
+    "setup:fast": "npm install --prefer-offline --no-audit --no-fund --progress=false",
+    "setup:dev": "npm run setup:fast && npm run rebuild:native",
     "dev": "concurrently -k \"npm:dev:renderer\" \"npm:dev:electron\"",
     "dev:renderer": "vite",
     "dev:electron": "wait-on tcp:5173 && electronmon .",
     "start": "electron .",
     "build": "npm run build:renderer && npm run build:electron",
     "build:renderer": "vite build",
-    "build:electron": "electron-builder --dir",
-    "dist:win": "npm run build:renderer && electron-builder --win nsis",
+    "build:electron": "npx electron-builder --dir",
+    "dist:win": "npm run build:renderer && npx electron-builder --win nsis",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "rebuild:native": "electron-rebuild -f -w better-sqlite3",
+    "rebuild:native": "npx @electron/rebuild -f -w better-sqlite3",
     "generate-toc": "node index.js --generate-toc",
     "validate-fds": "node index.js --validate",
-    "create-sections": "node index.js --create-sections",
-    "postinstall": "electron-rebuild -f -w better-sqlite3"
+    "create-sections": "node index.js --create-sections"
   },
   "keywords": [
     "filing-system",
@@ -34,11 +35,10 @@
   "author": "St. Clare College",
   "license": "MIT",
   "engines": {
-    "node": ">=20 <21"
+    "node": ">=20"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.64.2",
-    "archiver": "^7.0.1",
     "argon2": "^0.41.1",
     "better-sqlite3": "^11.8.1",
     "file-type": "^20.4.1",
@@ -56,8 +56,6 @@
     "autoprefixer": "^10.4.20",
     "concurrently": "^9.1.2",
     "electron": "^32.3.0",
-    "electron-builder": "^25.1.8",
-    "electron-rebuild": "^3.2.9",
     "electronmon": "^2.0.3",
     "eslint": "^9.22.0",
     "eslint-plugin-react": "^7.37.4",
