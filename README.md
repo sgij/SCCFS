@@ -1,81 +1,38 @@
-# St. Clare Filing System – Template & Documentation
+# St. Clare Filing System Starter
 
-This folder contains npm templates and automation tools for the St. Clare Filing System project.
+This repository now includes a secure Electron + React + SQLite groundwork aligned with the SCCFS specification.
 
-## What's Inside
+## Included groundwork
+- Electron main process with secure BrowserWindow defaults
+- Preload bridge exposing `window.sccfs` API surface
+- IPC starter handlers using zod validation and standard envelopes
+- `better-sqlite3` database bootstrap (WAL mode, baseline config)
+- React + Vite renderer with routing, Zustand, and React Query
+- Packaging scripts for Windows NSIS via electron-builder
+- Checklist-driven docs in `docs/checklists/`
 
-### index.js
-Automated template generator that provides:
-- **Table of Contents Generation** – Auto-generates TOC from FDS sections
-- **FDS Validation** – Checks for missing sections and completeness
-- **Folder Structure Scaffolding** – Creates organized project structure
-- **Section File Creation** – Generates markdown files for each section
-- **Heading Extraction** – Parses and maps all headings
-
-### package.json
-NPM configuration with scripts and dependencies.
-
-## Quick Start
-
+## Run locally
 ```bash
-cd D:\templates
 npm install
-npm run generate-toc        # View table of contents
-npm run create-sections     # Create folder structure
-npm run validate-fds        # Validate FDS document
+npm run dev
 ```
 
-## Scripts
-
-| Script | Description |
-|--------|-------------|
-| `npm start` | Run the generator |
-| `npm run generate-toc` | Generate markdown TOC |
-| `npm run validate-fds` | Validate FDS completeness |
-| `npm run create-sections` | Create project structure |
-| `npm run dev` | Watch mode |
-
-## Example Usage
-
-### Generate TOC from FDS
+## Build and package
 ```bash
-npm run generate-toc
+npm run build
+npm run dist:win
 ```
 
-### Validate your FDS document
-```bash
-npm run validate-fds -- path/to/your/fds.md
-```
+## Key scripts
+- `npm run dev`: start renderer + Electron together
+- `npm run build:renderer`: build Vite renderer to `src/renderer/dist`
+- `npm run build:electron`: package app directory output
+- `npm run dist:win`: create NSIS Windows installer
+- `npm run rebuild:native`: rebuild `better-sqlite3` for Electron ABI
 
-### Create a new project structure
-```bash
-npm run create-sections
-```
-
-This will create:
-- `docs/sections/` – Individual section files
-- `src/` – Application structure
-- `tests/` – Test folders
-- `build/` – Build configuration
-- Other project directories
-
-## Template Features
-
-✅ Auto-generates folder structure based on FDS sections
-✅ Creates markdown files for each section with templates
-✅ Validates document completeness
-✅ Generates clickable table of contents
-✅ Extracts and maps all headings
-✅ Easy to extend and customize
-
-## Next Steps
-
-1. Run `npm run create-sections` to scaffold the project
-2. Edit individual section files in `docs/sections/`
-3. Build your application in `src/`
-4. Run tests in `tests/`
-
----
-
-**Version:** 1.0.0
-**Last Updated:** 2026-04-15
+## Checklist-first iteration path
+1. Authentication and role checks
+2. Upload + download core I/O paths
+3. Storage quota and backup/restore
+4. Encryption and key management
+5. Search/sorting and UX polish
